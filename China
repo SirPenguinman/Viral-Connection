@@ -1,0 +1,146 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Image;
+import java.awt.Window;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLayeredPane;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+
+public class China extends JFrame {
+	public static China Cframe = new China();
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					
+					Cframe.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public China() {
+		setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 734, 549);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane.setBackground(Color.WHITE);
+		contentPane.add(layeredPane, BorderLayout.EAST);
+		
+		JLabel lblNewLabel = new JLabel("China");
+		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 30));
+		
+		JLabel China = new JLabel("");
+		China.setBackground(Color.WHITE);
+		Image img = new ImageIcon (this.getClass().getResource("unnamed.png")).getImage();
+		Image modifiedChina = img.getScaledInstance(240,240,java.awt.Image.SCALE_SMOOTH);
+		China.setIcon(new ImageIcon(modifiedChina));
+		
+		JButton Button1 = new JButton("SARS (Corona Virus)");
+		Button1.setFont(new Font("Century Gothic", Font.PLAIN, 11));
+		Button1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+
+			Cframe.setVisible(false);
+			Corona_Virus c = new Corona_Virus();
+			c.setVisible(true);
+		
+			}
+		});
+		
+		JButton Button3 = new JButton("Bacterial Diarrhea");
+		Button3.setFont(new Font("Century Gothic", Font.PLAIN, 11));
+		Button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cframe.setVisible(false);
+				Bacterial_Diarrhea b = new Bacterial_Diarrhea();
+				b.setVisible(true);
+			
+			}
+		});
+		
+		JButton Button2 = new JButton("Hepatitis A");
+		Button2.setFont(new Font("Century Gothic", Font.PLAIN, 11));
+		Button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cframe.setVisible(false);
+				Hepatitis_A h = new Hepatitis_A();
+				h.setVisible(true);
+				
+			}
+		});
+		
+		JLabel label = new JLabel("New label");
+		GroupLayout gl_layeredPane = new GroupLayout(layeredPane);
+		gl_layeredPane.setHorizontalGroup(
+			gl_layeredPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_layeredPane.createSequentialGroup()
+					.addContainerGap(240, Short.MAX_VALUE)
+					.addComponent(China, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+					.addGap(20)
+					.addGroup(gl_layeredPane.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(Button2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Button3, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Button1, Alignment.LEADING))
+					.addContainerGap(83, GroupLayout.PREFERRED_SIZE))
+				.addGroup(Alignment.LEADING, gl_layeredPane.createSequentialGroup()
+					.addGap(340)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(305, Short.MAX_VALUE))
+		);
+		gl_layeredPane.setVerticalGroup(
+			gl_layeredPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_layeredPane.createSequentialGroup()
+					.addGap(103)
+					.addGroup(gl_layeredPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_layeredPane.createSequentialGroup()
+							.addGap(83)
+							.addComponent(Button1, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
+							.addGap(38)
+							.addComponent(Button2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+							.addGap(36)
+							.addComponent(Button3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_layeredPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_layeredPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel)
+								.addComponent(label, GroupLayout.PREFERRED_SIZE, -5, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(China)))
+					.addGap(120))
+		);
+		layeredPane.setLayout(gl_layeredPane);
+	}
+}
